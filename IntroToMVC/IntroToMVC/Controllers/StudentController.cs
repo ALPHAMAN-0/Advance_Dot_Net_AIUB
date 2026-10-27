@@ -4,7 +4,12 @@ namespace IntroToMVC.Controllers
 {
     public class StudentController : Controller
     {
+        private static List<Models.StudentModel> students = new List<Models.StudentModel>();
         public IActionResult Index()
+        {
+            return View(students);
+        }
+        public IActionResult Create()          
         {
             return View();
         }
@@ -13,7 +18,9 @@ namespace IntroToMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View("Details", student);
+                student.id = students.Count + 1;   
+                students.Add(student);             
+                return RedirectToAction("Index");  
             }
             return View(student);
         }

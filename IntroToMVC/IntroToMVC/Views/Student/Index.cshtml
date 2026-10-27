@@ -3,6 +3,24 @@
 *@
 @{
 }
-<div>
-    <h1>My name is Siam</h1>
-</div>
+@model List<IntroToMVC.Models.StudentModel>
+<h3>All Students</h3>
+<a asp-action="Create" class="btn btn-primary">Create Student</a>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>CGPA</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.id</td>
+            <td>@s.name</td>
+            <td>@s.dept</td>
+            <td>@s.cgpa</td>
+        </tr>
+    }
+</table>
